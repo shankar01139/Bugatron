@@ -43,7 +43,7 @@ namespace BugatronWebApi.Repository
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string sql = "select * from developer";
+                string sql = "select * from developer where developer_id=@id";
                 dbConnection.Open();
                 return dbConnection.Query<developer_info>(sql,new { Id = id }).FirstOrDefault();
             }
@@ -52,7 +52,7 @@ namespace BugatronWebApi.Repository
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string sql = "select * from developer where mail=@developer_email && password=@developer_password";
+                string sql = "select * from developer where developer_email=@mail && developer_password=@password";
                 dbConnection.Open();
                 return dbConnection.Query<IActionResult>(sql, new { Email  = mail,Password = password }).FirstOrDefault();
             }
