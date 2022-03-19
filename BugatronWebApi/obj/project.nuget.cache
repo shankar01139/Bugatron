@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8L7R6Un1BYb1/nd42aElKn+QU+/Y8VrM7ooOPEe9ne3HqEwoM8EpSjPQI0Ed3ldblvI2I10A6Uihh6OsCpzRKQ==",
+  "dgSpecHash": "pqMStA5K8LGZCBQ+AtU9hR3X5wkTkHyEvH98LVnjAh6rzMEvrhvzV0mscx+Xq6cY8/YRt4sXjgtvb6kaEsbc7g==",
   "success": true,
-  "projectFilePath": "D:\\chutti\\Bugatron\\BugatronWebApi\\BugatronWebApi.csproj",
+  "projectFilePath": "D:\\Bugatron\\BugatronWebApi\\BugatronWebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\elcot\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\elcot\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",

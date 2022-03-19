@@ -16,7 +16,7 @@ namespace BugatronWebApi.Model
         public string customer_contact { get; set; }
         public string  customer_mail { get; set; }
         public DateTime created { get; set; }
-        
+        public char customer_stat { get; set; }
 
     }
 }

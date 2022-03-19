@@ -6,4 +6,5 @@ export class CustomerInfo {
     public customer_contact?: string;
     public customer_mail?: string;
     public created?: Date;
+    public customer_stat?:string;
 }

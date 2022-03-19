@@ -1,0 +1,63 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/dashboard">
+          <i class="icon-grid menu-icon"></i>
+          <span class="menu-title">Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <i class="mdi mdi-account-network menu-icon"></i>
+          <span class="menu-title">Developer</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-basic">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" routerLink="/admin/developer">Developer Details</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/admin/developer/analysis">Performance Report</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+          <i class="mdi mdi-city menu-icon"></i>
+          <span class="menu-title">Customer</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="form-elements">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"><a class="nav-link" routerLink="/admin/customer">Customer Details</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/admin/customer/analysis">Customer Analysis</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#form-project" aria-expanded="false" aria-controls="form-elements">
+          <i class="mdi mdi-apps menu-icon"></i>
+          <span class="menu-title">Project</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="form-project">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"><a class="nav-link" routerLink="/admin/project">Project Details</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/admin/project/report">Project Report</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#form-issue" aria-expanded="false" aria-controls="form-elements">
+          <i class="mdi mdi-alert-box menu-icon"></i>
+          <span class="menu-title">Issue</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="form-issue">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"><a class="nav-link" routerLink="/admin/issue">Issue Details</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/admin/issue/report">Issue Report</a></li>
+          </ul>
+        </div>
+      </li>
+
+    </ul>
+  </nav>

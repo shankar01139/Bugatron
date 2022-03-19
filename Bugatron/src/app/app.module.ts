@@ -7,13 +7,36 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule } from '@angular/forms';
-import { AdminboardComponent } from './adminboard/adminboard.component';
+import { AdminboardComponent } from './admin/adminboard/adminboard.component';
+import { SidenavComponent } from './navbar/sidenav/sidenav.component';
+import { TopnavComponent } from './navbar/topnav/topnav.component';
+import { RightnavComponent } from './navbar/rightnav/rightnav.component';
+import { DeveloperComponent } from './admin/developer/developer.component';
+import { DevDetailsComponent } from './admin/developer/dev-details/dev-details.component';
+import { CustomerComponent } from './admin/customer/customer.component';
+import { CustomerDetailsComponent } from './admin/customer/customer-details/customer-details.component';
+import { ProjectComponent } from './admin/project/project.component';
+import { ProjectReportComponent } from './admin/project/project-report/project-report.component';
+import { IssueComponent } from './admin/issue/issue.component';
+import { IssueReportComponent } from './admin/issue/issue-report/issue-report.component';
+import * as $ from 'jquery';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     PageNotFoundComponent,
     AdminboardComponent,
+    SidenavComponent,
+    TopnavComponent,
+    RightnavComponent,
+    DeveloperComponent,
+    DevDetailsComponent,
+    CustomerComponent,
+    CustomerDetailsComponent,
+    ProjectComponent,
+    ProjectReportComponent,
+    IssueComponent,
+    IssueReportComponent
   ],
   imports: [
     BrowserModule,

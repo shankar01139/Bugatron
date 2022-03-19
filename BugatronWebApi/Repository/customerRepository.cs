@@ -23,7 +23,7 @@ namespace BugatronWebApi.Repository
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string sql = @"insert into customer  (customer_id,customer_name,company_name,customer_pass,customer_contact,created,customer_mail) values (@customer_id,@customer_name,@company_name,@customer_pass,@customer_contact,@created,@customer_mail)";
+                string sql = @"insert into customer  (customer_id,customer_name,company_name,customer_pass,customer_contact,created,customer_mail,customer_stat) values (@customer_id,@customer_name,@company_name,@customer_pass,@customer_contact,@created,@customer_mail,@customer_stat)";
                 dbConnection.Open();
                 dbConnection.Execute(sql, cust);
             }
@@ -60,7 +60,7 @@ namespace BugatronWebApi.Repository
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string sql = "update customer set developer_name = @developer_name,developer_email = @developer_email,developer_password = @developer_password,developer_pos = @developer_pos,developer_contact = @developer_contact,created = @created where developer_id = @developer_id ";
+                string sql = "update customer set developer_name = @developer_name,developer_email = @developer_email,developer_password = @developer_password,developer_pos = @developer_pos,developer_contact = @developer_contact,created = @created, customer_stat =@customer_stat where developer_id = @developer_id ";
                 dbConnection.Open();
                 dbConnection.Execute(sql, cust);
             }
@@ -69,7 +69,7 @@ namespace BugatronWebApi.Repository
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string sql = "update developer set customer_id=@customer_id,customer_name=@customer_name,company_name=@company_name,customer_pass=@customer_pass,customer_contact=@customer_contact,created=@created,customer_mail=@customer_mail where customer_id = @customer_id ";
+                string sql = "update developer set customer_id=@customer_id,customer_name=@customer_name,company_name=@company_name,customer_pass=@customer_pass,customer_contact=@customer_contact,created=@created,customer_mail=@customer_mail,customer_stat = @customer_stat where customer_id = @customer_id ";
                 dbConnection.Open();
                 dbConnection.Execute(sql, cust);
             }

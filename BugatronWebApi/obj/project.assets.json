@@ -6423,11 +6423,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\chutti\\Bugatron\\BugatronWebApi\\BugatronWebApi.csproj",
+      "projectUniqueName": "D:\\Bugatron\\BugatronWebApi\\BugatronWebApi.csproj",
       "projectName": "BugatronWebApi",
-      "projectPath": "D:\\chutti\\Bugatron\\BugatronWebApi\\BugatronWebApi.csproj",
+      "projectPath": "D:\\Bugatron\\BugatronWebApi\\BugatronWebApi.csproj",
       "packagesPath": "C:\\Users\\elcot\\.nuget\\packages\\",
-      "outputPath": "D:\\chutti\\Bugatron\\BugatronWebApi\\obj\\",
+      "outputPath": "D:\\Bugatron\\BugatronWebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
