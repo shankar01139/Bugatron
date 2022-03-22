@@ -20,6 +20,7 @@ import { ProjectReportComponent } from './admin/project/project-report/project-r
 import { IssueComponent } from './admin/issue/issue.component';
 import { IssueReportComponent } from './admin/issue/issue-report/issue-report.component';
 import * as $ from 'jquery';
+import { CustomerAddComponent } from './admin/customer/customer-add/customer-add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import * as $ from 'jquery';
     ProjectComponent,
     ProjectReportComponent,
     IssueComponent,
-    IssueReportComponent
+    IssueReportComponent,
+    CustomerAddComponent
   ],
   imports: [
     BrowserModule,

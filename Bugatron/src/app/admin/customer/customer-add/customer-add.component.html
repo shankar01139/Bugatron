@@ -1,0 +1,57 @@
+<div class="container-scroller">
+  <app-topnav></app-topnav>
+  <div class="container-fluid page-body-wrapper">
+    <app-rightnav></app-rightnav>
+    <app-sidenav></app-sidenav>
+    <div class="main-panel">
+      <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Add Customer</h4>
+                    <!-- <p class="card-description">
+                      Horizontal form layout
+                    </p> -->
+                    <form class="forms-sample" autocomplete="off" #custAdd="ngForm">
+                      <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Customer Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputUsername2" placeholder="Enter Customername" name="custName" #custName = "ngModel" [(ngModel)] ="cust.customer_name">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Company Name</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter Companyname" name="compName" #compName="ngModel" [(ngModel)]="cust.company_name">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputEmail3" class="col-sm-3 col-form-label">Customer E-Mail</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter Customer mail" name="custMail" #custMail="ngModel" [(ngModel)]="cust.customer_mail">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputEmail4" class="col-sm-3 col-form-label">Customer password</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control" id="exampleInputEmail4" placeholder="Enter Companyname" name="custPass" #ccustPass="ngModel" [(ngModel)]="cust.customer_pass">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputEmail5" class="col-sm-3 col-form-label">Customer Contact</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control" id="exampleInputEmail5" placeholder="Enter Customer Contact number" name="custContact" #ccustContact="ngModel" [(ngModel)]="cust.customer_contact">
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2" (click)="saveCustomer()">Submit</button>
+                      <button class="btn btn-light" (click)="goBack()">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

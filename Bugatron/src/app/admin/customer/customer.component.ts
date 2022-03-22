@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CustomerInfoService } from 'src/app/shared/service/customer-info.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { CustomerInfoService } from 'src/app/shared/service/customer-info.servic
 })
 export class CustomerComponent implements OnInit {
   customerList :any = [];
-  constructor(private customerService:CustomerInfoService) { }
+  constructor(private customerService:CustomerInfoService,private router:Router) { }
 
   ngOnInit(): void {
     this.customerService.getAll().subscribe((res) => {
@@ -19,5 +20,7 @@ export class CustomerComponent implements OnInit {
       })
     });
   }
-
+  custAdd(){
+    this.router.navigateByUrl('/admin/customer/add');
+  }
 }

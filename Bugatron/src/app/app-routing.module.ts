@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminboardComponent } from './admin/adminboard/adminboard.component';
+import { CustomerAddComponent } from './admin/customer/customer-add/customer-add.component';
 import { CustomerDetailsComponent } from './admin/customer/customer-details/customer-details.component';
 import { CustomerComponent } from './admin/customer/customer.component';
 import { DevDetailsComponent } from './admin/developer/dev-details/dev-details.component';
@@ -19,10 +20,11 @@ const routes: Routes = [
   { path: 'admin/developer/analysis', component: DevDetailsComponent },
   { path: 'admin/customer', component: CustomerComponent },
   { path: 'admin/customer/analysis', component: CustomerDetailsComponent },
+  { path: 'admin/customer/add', component: CustomerAddComponent },
   { path: 'admin/project', component: ProjectComponent },
   { path: 'admin/project/report', component: ProjectReportComponent },
-  { path:'admin/issue',component:IssueComponent},
-  { path:'admin/issue/report',component:IssueReportComponent},
+  { path: 'admin/issue', component: IssueComponent },
+  { path: 'admin/issue/report', component: IssueReportComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
