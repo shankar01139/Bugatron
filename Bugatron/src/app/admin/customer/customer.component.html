@@ -38,10 +38,10 @@
                         <td *ngIf="cust.customer_stat == 'Y'" class="text-center text-success"><i class="mdi mdi-alert-octagon"></i> <br> Active</td>
                         <td *ngIf="cust.customer_stat == 'N'" class="text-center text-danger"><i class="mdi mdi-alert-octagon"></i> <br> InActive</td>
                         <td class="text-center">
-                            <button class="btn btn-warning p-1" style="text-align: center;width: 75px;text-decoration: solid;"><b>Edit</b></button>    
+                            <button class="btn btn-warning p-1" style="text-align: center;width: 75px;text-decoration: solid;" (click)="editCust(cust.customer_id)"><b>Edit</b></button>    
                         </td>
                         <td class="text-center">
-                            <button class="btn btn-danger p-1" style="text-align: center;width: 75px;text-decoration: solid;"><b>Del</b></button>    
+                            <button class="btn btn-danger p-1" style="text-align: center;width: 75px;text-decoration: solid;" (click)="deleteCust(cust.customer_id)"><b>Del</b></button>    
                         </td>
                       </tr>
                     </tbody>

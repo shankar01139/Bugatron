@@ -12,6 +12,9 @@ export class CustomerComponent implements OnInit {
   constructor(private customerService:CustomerInfoService,private router:Router) { }
 
   ngOnInit(): void {
+    this.getCust();
+  }
+  getCust(){
     this.customerService.getAll().subscribe((res) => {
       console.log(res);
       this.customerList = res;
@@ -22,5 +25,18 @@ export class CustomerComponent implements OnInit {
   }
   custAdd(){
     this.router.navigateByUrl('/admin/customer/add');
+  }
+
+  deleteCust(id:any){
+    this.customerService.delete(id).subscribe(res =>{
+      console.log(res);
+      this.getCust();
+    },
+    err =>{
+      console.log(err);
+    })
+  }
+  editCust(id:any){
+   this.router.navigate(['/admin/customer/add',id]); 
   }
 }

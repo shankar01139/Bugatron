@@ -11,6 +11,9 @@ export class ProjectComponent implements OnInit {
   constructor(private projectService:ProjectInfoService) { }
 
   ngOnInit(): void {
+    this.getProj();
+  }
+  getProj(){
     this.projectService.getAll().subscribe(res =>{
       console.log(res);
       this.projList = res;
@@ -18,7 +21,11 @@ export class ProjectComponent implements OnInit {
         ($("#dtable")as any).dataTable();
       })
     })
-
   }
-
+  delProj(id:any){
+    this.projectService.delete(id).subscribe(res =>{
+      console.log(res);
+      this.getProj();
+    })
+  }
 }

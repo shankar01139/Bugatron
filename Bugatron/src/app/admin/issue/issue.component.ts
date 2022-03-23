@@ -11,6 +11,9 @@ export class IssueComponent implements OnInit {
   constructor(private issueService:IssueInfoService) { }
 
   ngOnInit(): void {
+    this.getIssue();
+  }
+  getIssue(){
     this.issueService.getAll().subscribe(res =>{
       console.log(res);
       this.issueList = res;
@@ -19,5 +22,10 @@ export class IssueComponent implements OnInit {
       })
     })
   }
-
+  delIssue(id:any){
+    this.issueService.delete(id).subscribe(res =>{
+      console.log(res);
+      this.getIssue();
+    })
+  }
 }

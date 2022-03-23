@@ -21,6 +21,9 @@ import { IssueComponent } from './admin/issue/issue.component';
 import { IssueReportComponent } from './admin/issue/issue-report/issue-report.component';
 import * as $ from 'jquery';
 import { CustomerAddComponent } from './admin/customer/customer-add/customer-add.component';
+import { DeveloperAddComponent } from './admin/developer/developer-add/developer-add.component';
+import { ProjectAddComponent } from './admin/project/project-add/project-add.component';
+import { IssueAddComponent } from './admin/issue/issue-add/issue-add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +41,10 @@ import { CustomerAddComponent } from './admin/customer/customer-add/customer-add
     ProjectReportComponent,
     IssueComponent,
     IssueReportComponent,
-    CustomerAddComponent
+    CustomerAddComponent,
+    DeveloperAddComponent,
+    ProjectAddComponent,
+    IssueAddComponent
   ],
   imports: [
     BrowserModule,
