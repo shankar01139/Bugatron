@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IssueInfoService } from 'src/app/shared/service/issue-info.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { IssueInfoService } from 'src/app/shared/service/issue-info.service';
 })
 export class IssueComponent implements OnInit {
   issueList:any=[];
-  constructor(private issueService:IssueInfoService) { }
+  constructor(private issueService:IssueInfoService,private router:Router) { }
 
   ngOnInit(): void {
     this.getIssue();
@@ -27,5 +28,8 @@ export class IssueComponent implements OnInit {
       console.log(res);
       this.getIssue();
     })
+  }
+  editIssue(id:any){
+   this.router.navigate(['/admin/issue/add',id]); 
   }
 }

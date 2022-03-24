@@ -31,10 +31,7 @@ export class CustomerComponent implements OnInit {
     this.customerService.delete(id).subscribe(res =>{
       console.log(res);
       this.getCust();
-    },
-    err =>{
-      console.log(err);
-    })
+    }) 
   }
   editCust(id:any){
    this.router.navigate(['/admin/customer/add',id]); 

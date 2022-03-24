@@ -32,7 +32,7 @@ namespace BugatronWebApi.Repository
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string sql = "select * from project";
+                string sql = "select project_id,project_name,project_company,p.created,c.customer_name as customer_id from project p join customer c on c.customer_id = p.customer_id";
                 dbConnection.Open();
                 return dbConnection.Query<project_info>(sql);
             }

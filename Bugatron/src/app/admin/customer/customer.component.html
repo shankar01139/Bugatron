@@ -22,6 +22,7 @@
                       <tr>
                         <th class="text-center">#</th>
                         <th class="text-center">Customer Name</th>
+                        <th class="text-center">Company Name</th>
                         <th class="text-center">Contact Number</th>
                         <th class="text-center">Mail</th>
                         <th class="text-center">Status</th>
@@ -33,6 +34,7 @@
                       <tr *ngFor="let cust of customerList;let i=index">
                         <td class="text-center">{{i+1}}</td>
                         <td class="text-center">{{cust.customer_name}} </td>
+                        <td class="text-center">{{cust.company_name}}</td>
                         <td class="text-center">{{cust.customer_contact}} </td>
                         <td class="text-center">{{cust.customer_mail}}</td>
                         <td *ngIf="cust.customer_stat == 'Y'" class="text-center text-success"><i class="mdi mdi-alert-octagon"></i> <br> Active</td>

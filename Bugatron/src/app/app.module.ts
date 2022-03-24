@@ -24,6 +24,8 @@ import { CustomerAddComponent } from './admin/customer/customer-add/customer-add
 import { DeveloperAddComponent } from './admin/developer/developer-add/developer-add.component';
 import { ProjectAddComponent } from './admin/project/project-add/project-add.component';
 import { IssueAddComponent } from './admin/issue/issue-add/issue-add.component';
+import { CompanyComponent } from './company/company.component';
+import { CompanyAddComponent } from './company/company-add/company-add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +46,9 @@ import { IssueAddComponent } from './admin/issue/issue-add/issue-add.component';
     CustomerAddComponent,
     DeveloperAddComponent,
     ProjectAddComponent,
-    IssueAddComponent
+    IssueAddComponent,
+    CompanyComponent,
+    CompanyAddComponent
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,8 @@ import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProjectAddComponent } from './admin/project/project-add/project-add.component';
 import { IssueAddComponent } from './admin/issue/issue-add/issue-add.component';
+import { CompanyComponent } from './company/company.component';
+import { CompanyAddComponent } from './company/company-add/company-add.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -27,6 +29,9 @@ const routes: Routes = [
   { path: 'admin/customer/analysis', component: CustomerDetailsComponent },
   { path: 'admin/customer/add', component: CustomerAddComponent },
   { path: 'admin/customer/add/:id', component: CustomerAddComponent },
+  { path: 'admin/company', component: CompanyComponent },
+  { path: 'admin/company/add', component: CompanyAddComponent },
+  { path: 'admin/company/add/:id', component: CompanyAddComponent },
   { path: 'admin/project', component: ProjectComponent },
   { path: 'admin/project/report', component: ProjectReportComponent },
   { path: 'admin/project/add', component: ProjectAddComponent },

@@ -1,1 +1,51 @@
-<p>project-add works!</p>
+<div class="container-scroller">
+  <app-topnav></app-topnav>
+  <div class="container-fluid page-body-wrapper">
+    <app-rightnav></app-rightnav>
+    <app-sidenav></app-sidenav>
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Add Project</h4>
+                    <!-- <p class="card-description">
+                      Horizontal form layout
+                    </p> -->
+                    <form class="forms-sample" autocomplete="off" #custAdd="ngForm">
+                      <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Project Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputUsername2" placeholder="Enter Projectname" name="projName" #projName = "ngModel" [(ngModel)] ="proj.project_name">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Company Name</label>
+                        <div class="col-sm-9">
+                            <select name="compName" #compName="ngModel" [(ngModel)]="proj.project_company" class="form-control">
+                                <option value="null" disabled selected>Select Company</option>
+                                <option *ngFor="let cu of compList" [value]="cu.company_name">{{cu.company_name}}</option>
+                            </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputEmail5" class="col-sm-3 col-form-label">Customer Name</label>
+                        <div class="col-sm-9">
+                            <select name="custName" id="custselect" #custName="ngModel" [(ngModel)]="proj.customer_id" class="form-control">
+                                <option value="null" disabled selected>Select Customer</option>
+                                <option *ngFor="let cu of custList" [value]="cu.customer_id">{{cu.customer_name}}</option>
+                            </select>
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2" (click)="saveProj()" >Submit</button>
+                      <button class="btn btn-light" (click)="goBack()" >Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

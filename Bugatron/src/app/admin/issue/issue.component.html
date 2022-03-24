@@ -34,7 +34,7 @@
                           <td class="text-center">{{issue.issue_status}}</td>
                           <td class="text-center">{{issue.updated | date:'dd/MM/yyyy HH:mm a'}}</td>
                           <td class="text-center">
-                              <button class="btn btn-warning p-1" style="text-align: center;width: 75px;text-decoration: solid;"><b>Edit</b></button>    
+                              <button class="btn btn-warning p-1" style="text-align: center;width: 75px;text-decoration: solid;" (click)="editIssue(issue.issue_id)"><b>Edit</b></button>    
                           </td>
                           <td class="text-center">
                               <button class="btn btn-danger p-1" style="text-align: center;width: 75px;text-decoration: solid;" (click)="delIssue(issue.issue_id)"><b>Del</b></button>    

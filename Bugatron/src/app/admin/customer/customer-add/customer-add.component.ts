@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CustomerInfo } from 'src/app/shared/model/customer-info.model';
+import { CompanyInfoService } from 'src/app/shared/service/company-info.service';
 import { CustomerInfoService } from 'src/app/shared/service/customer-info.service';
 
 @Component({
@@ -20,7 +21,14 @@ export class CustomerAddComponent implements OnInit {
     created: new Date(),
   };
   myParam:any;
-  constructor(private service: CustomerInfoService, private router: Router,private route:ActivatedRoute) {}
+  compList:any =[];
+  constructor(private service: CustomerInfoService, private router: Router,private route:ActivatedRoute,private companyService:CompanyInfoService) {
+    this.companyService.getAll().subscribe(res=>{
+      for(let i of res){
+        this.compList.push(i);
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params:Params) =>{
@@ -34,7 +42,7 @@ export class CustomerAddComponent implements OnInit {
     console.log(this.cust);
     const data = {
       customer_id: this.cust.customer_id,
-      customer_name: this.cust.company_name,
+      customer_name: this.cust.customer_name,
       company_name: this.cust.company_name,
       customer_mail: this.cust.customer_mail,
       customer_pass: this.cust.customer_pass,
