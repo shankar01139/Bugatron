@@ -33,6 +33,6 @@ export class DeveloperComponent implements OnInit {
     this.router.navigate(['/admin/developer/add', id]);
   }
   devAdd(){
-    this.router.navigateByUrl('/admin/developer.add');
+    this.router.navigateByUrl('/admin/developer/add');
   }
 }

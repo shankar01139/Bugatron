@@ -14,7 +14,6 @@ namespace BugatronWebApi.Model
         public char issue_status { get; set; } = 'Y';
         public DateTime created { get; set; }
         public DateTime updated { get; set; }
-        
-
+        public int assigned_to { get; set; }
     }
 }

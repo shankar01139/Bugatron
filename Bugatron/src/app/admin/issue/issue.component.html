@@ -21,6 +21,7 @@
                           <th class="text-center">Issue Name</th>
                           <th class="text-center">Project</th>
                           <th class="text-center">Issue Status</th>
+                          <th class="text-center">Assigned To</th>
                           <th class="text-center">Last Updated</th>
                           <th class="text-center">Edit</th>
                           <th class="text-center">Delete</th>
@@ -32,6 +33,7 @@
                           <td class="text-center">{{issue.issue_name}} </td>
                           <td class="text-center">{{issue.project_id}} </td>
                           <td class="text-center">{{issue.issue_status}}</td>
+                          <td class="text-center">{{issue.assigned_to}}</td>
                           <td class="text-center">{{issue.updated | date:'dd/MM/yyyy HH:mm a'}}</td>
                           <td class="text-center">
                               <button class="btn btn-warning p-1" style="text-align: center;width: 75px;text-decoration: solid;" (click)="editIssue(issue.issue_id)"><b>Edit</b></button>    

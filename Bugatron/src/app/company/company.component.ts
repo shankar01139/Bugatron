@@ -10,7 +10,6 @@ import { CompanyInfoService } from '../shared/service/company-info.service';
 export class CompanyComponent implements OnInit {
   companyList :any = [];
   constructor(private companyService:CompanyInfoService,private router:Router) { }
-
   ngOnInit(): void {
     this.getCust();
   }

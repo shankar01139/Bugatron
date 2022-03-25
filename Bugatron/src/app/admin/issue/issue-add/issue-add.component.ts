@@ -17,6 +17,7 @@ export class IssueAddComponent implements OnInit {
     project_id: 0,
     created: new Date(),
     updated: new Date(),
+    assigned_to:0
   };
   myParam: any;
   constructor(
@@ -41,8 +42,9 @@ export class IssueAddComponent implements OnInit {
       issue_desc: this.issue.issue_desc,
       issue_status: this.issue.issue_status,
       project_id: this.issue.project_id,
-      created: new Date(),
-      updated: new Date(),
+      created: this.issue.created,
+      updated: this.issue.updated,
+      assigned_to:this.issue.assigned_to
     };
     if (data.issue_id == 0) {
       this.service.create(data).subscribe((res) => {

@@ -6,5 +6,5 @@ export class IssueInfo {
     public  issue_status ?: string;
     public  created ?:Date;
     public  updated ?:Date;
-    
+    public assigned_to?:number;
 }

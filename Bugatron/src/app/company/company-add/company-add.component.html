@@ -4,7 +4,181 @@
     <app-rightnav></app-rightnav>
     <app-sidenav></app-sidenav>
     <div class="main-panel">
-      <div class="content-wrapper"></div>
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Add Company</h4>
+                <!-- <p class="card-description">
+                      Horizontal form layout
+                    </p> -->
+                <form class="forms-sample" autocomplete="off" #custAdd="ngForm">
+                  <div class="form-group row">
+                    <label
+                      for="exampleInputUsername2"
+                      class="col-sm-3 col-form-label"
+                      >Company Name</label
+                    >
+                    <div class="col-sm-9">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleInputUsername2"
+                        placeholder="Enter Companyname"
+                        name="compName"
+                        #compName="ngModel"
+                        [(ngModel)]="cust.comapny_name"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label
+                      for="exampleInputEmail2"
+                      class="col-sm-3 col-form-label"
+                      >Company Address</label
+                    >
+                    <div class="col-sm-9">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="exampleInputUsername3"
+                            placeholder="Enter Company Address"
+                            name="compAddr"
+                            #compAddr="ngModel"
+                            [(ngModel)]="cust.company_address"
+                          />
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="row">
+                            <label
+                              for="exampleInputEmail2"
+                              class="col-sm-3 col-form-label"
+                              >City</label
+                            >
+                            <div class="col-sm-9">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="exampleInputUsername4"
+                                placeholder="Enter City"
+                                name="city"
+                                #cty="ngModel"
+                                [(ngModel)]="cust.city"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label
+                      for="exampleInputEmail3"
+                      class="col-sm-3 col-form-label"
+                      >State</label
+                    >
+                    <div class="col-sm-9">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="exampleInputEmail5"
+                            placeholder="Enter State"
+                            name="custstate"
+                            #custstate="ngModel"
+                            [(ngModel)]="cust.state"
+                          />
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="row">
+                            <label
+                              for="exampleInputEmail3"
+                              class="col-sm-3 col-form-label"
+                              >Country</label
+                            >
+                            <div class="col-sm-9">
+                              <input
+                                type="email"
+                                class="form-control"
+                                id="exampleInputEmail6"
+                                placeholder="Enter Country"
+                                name="custcty"
+                                #custscty="ngModel"
+                                [(ngModel)]="cust.country"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label
+                      for="exampleInputEmail4"
+                      class="col-sm-3 col-form-label"
+                      >Zip</label
+                    >
+                    <div class="col-sm-9">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="exampleInputEmail7"
+                            placeholder="Enter Zip"
+                            name="custzip"
+                            #ccustzip="ngModel"
+                            [(ngModel)]="cust.zip"
+                            maxlength="6"
+                          />
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="row">
+                            <label
+                              for="exampleInputEmail4"
+                              class="col-sm-3 col-form-label"
+                              >Status</label
+                            >
+                            <div class="col-sm-9">
+                              <div
+                                class="form-check form-check-flat form-check-primary"
+                              >
+                                <label class="form-check-label">
+                                  <input
+                                    type="checkbox"
+                                    class="form-check-input"
+                                    name="stat"
+                                    #stat="ngModel"
+                                    [(ngModel)]="rec_stat"
+                                  />
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn btn-primary mr-2"
+                    (click)="saveCompany()"
+                  >
+                    Submit
+                  </button>
+                  <button class="btn btn-light" (click)="goBack()">
+                    Cancel
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -33,12 +33,12 @@
                         <tbody>
                           <tr *ngFor="let cust of companyList;let i=index">
                             <td class="text-center">{{i+1}}</td>
-                            <td class="text-center">{{cust.company_name}}</td>
+                            <td class="text-center">{{cust.comapny_name}}</td>
                             <td class="text-center">{{cust.company_address}}</td>
                             <td class="text-center">{{cust.city}}</td>
                             <td class="text-center">{{cust.state}}</td>
-                            <td *ngIf="cust.customer_stat == 'Y'" class="text-center text-success"><i class="mdi mdi-alert-octagon"></i> <br> Active</td>
-                            <td *ngIf="cust.customer_stat == 'N'" class="text-center text-danger"><i class="mdi mdi-alert-octagon"></i> <br> InActive</td>
+                            <td *ngIf="cust.company_stat == 'Y'" class="text-center text-success"><i class="mdi mdi-alert-octagon"></i> <br> Active</td>
+                            <td *ngIf="cust.company_stat == 'N'" class="text-center text-danger"><i class="mdi mdi-alert-octagon"></i> <br> InActive</td>
                             <td class="text-center">
                                 <button class="btn btn-warning p-1" style="text-align: center;width: 75px;text-decoration: solid;" (click)="editCust(cust.company_id)"><b>Edit</b></button>    
                             </td>

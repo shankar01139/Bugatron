@@ -7,18 +7,18 @@ import { DeveloperInfoService } from 'src/app/shared/service/developer-info.serv
 @Component({
   selector: 'app-developer-add',
   templateUrl: './developer-add.component.html',
-  styleUrls: ['./developer-add.component.css']
+  styleUrls: ['./developer-add.component.css'],
 })
 export class DeveloperAddComponent implements OnInit {
-  dev:DeveloperInfo ={
-    developer_id:0,
-    developer_name:'',
-    developer_pos:'',
-    developer_email:'',
-    developer_password:'',
-    developer_contact:'',
-    created:new Date()
-  }
+  dev: DeveloperInfo = {
+    developer_id: 0,
+    developer_name: '',
+    developer_pos: '',
+    developer_email: '',
+    developer_password: '',
+    developer_contact: '',
+    created: new Date(),
+  };
   myParam: any;
   constructor(
     private service: DeveloperInfoService,
@@ -34,16 +34,16 @@ export class DeveloperAddComponent implements OnInit {
       }
     });
   }
-  saveCustomer() {
+  saveDev() {
     console.log(this.dev);
     const data = {
-      developer_id:this.dev.developer_id,
-      developer_name:this.dev.developer_name,
-      developer_pos:this.dev.developer_pos,
-      developer_email:this.dev.developer_email,
-      developer_password:this.dev.developer_password,
-      developer_contact:this.dev.developer_contact,
-      created:this.dev.created
+      developer_id: this.dev.developer_id,
+      developer_name: this.dev.developer_name,
+      developer_pos: this.dev.developer_pos,
+      developer_email: this.dev.developer_email,
+      developer_password: this.dev.developer_password,
+      developer_contact: this.dev.developer_contact,
+      created: this.dev.created,
     };
     if (data.developer_id == 0) {
       this.service.create(data).subscribe((res) => {
@@ -62,14 +62,16 @@ export class DeveloperAddComponent implements OnInit {
     this.router.navigateByUrl('/admin/developer');
   }
   getCustInfo() {
+    debugger;
     this.service.get(this.myParam).subscribe((res) => {
-      this.dev.developer_id=res.developer_id,
-      this.dev.developer_name=res.developer_name,
-      this.dev.developer_pos=res.developer_pos,
-      this.dev.developer_email=res.developer_email,
-      this.dev.developer_password=res.developer_password,
-      this.dev.developer_contact=res.developer_contact,
-      this.dev.created=res.created
+      console.log(res.developer_contact)
+      this.dev.developer_id = res.developer_id;
+      this.dev.developer_name = res.developer_name;
+      this.dev.developer_pos = res.developer_pos;
+      this.dev.developer_email = res.developer_email;
+      this.dev.developer_password = res.developer_password;
+      this.dev.developer_contact = res.developer_contact;
+      this.dev.created = res.created;
     });
   }
 }

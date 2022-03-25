@@ -21,6 +21,7 @@ export class CompanyAddComponent implements OnInit {
     zip: '',
   };
   myParam: any;
+  rec_stat:boolean;
   constructor(
     private service: CompanyInfoService,
     private router: Router,
@@ -36,12 +37,19 @@ export class CompanyAddComponent implements OnInit {
     });
   }
   saveCompany() {
+    debugger
+    if(this.rec_stat == true){
+      this.cust.company_stat = 'Y';
+    }
+    else{
+      this.cust.company_stat = 'N';
+    }
     console.log(this.cust);
     const data = {
       company_id: this.cust.company_id,
       comapny_name: this.cust.comapny_name,
       company_address: this.cust.company_address,
-      company_stat: 'Y',
+      company_stat: this.cust.company_stat,
       city: this.cust.city,
       state: this.cust.state,
       country: this.cust.country,
@@ -69,7 +77,12 @@ export class CompanyAddComponent implements OnInit {
       this.cust.company_id= res.company_id;
       this.cust.comapny_name = res.comapny_name;
       this.cust.company_address=res.company_address;
-      this.cust.company_stat = res.company_stat;
+      if(res.company_stat== 'Y'){
+        this.rec_stat = true;
+      }
+      else{
+        this.rec_stat = false;
+      }
       this.cust.city = res.city;
       this.cust.state = res.state;
       this.cust.country = res.country;
