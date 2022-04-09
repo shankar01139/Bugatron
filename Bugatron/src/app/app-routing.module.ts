@@ -17,6 +17,11 @@ import { ProjectAddComponent } from './admin/project/project-add/project-add.com
 import { IssueAddComponent } from './admin/issue/issue-add/issue-add.component';
 import { CompanyComponent } from './company/company.component';
 import { CompanyAddComponent } from './company/company-add/company-add.component';
+import { CustomerDashboradComponent } from './customer/customer-dashborad/customer-dashborad.component';
+import { IssuesReportComponent } from './customer/issues-report/issues-report.component';
+import { IssuesAddComponent } from './customer/issues-add/issues-add.component';
+import { DeveloperDashboradComponent } from './developer/developer-dashborad/developer-dashborad.component';
+import { TaskComponent } from './developer/task/task.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -38,8 +43,12 @@ const routes: Routes = [
   { path: 'admin/project/add/:id', component: ProjectAddComponent },
   { path: 'admin/issue', component: IssueComponent },
   { path: 'admin/issue/report', component: IssueReportComponent },
-  { path: 'admin/issue/add', component: IssueAddComponent },
   { path: 'admin/issue/add/:id', component: IssueAddComponent },
+  { path: 'customer/dashboard', component: CustomerDashboradComponent },
+  { path: 'customer/addIssue', component: IssuesAddComponent },
+  { path: 'customer/issueReport', component: IssuesReportComponent },
+  { path: 'developer/dashboard', component: DeveloperDashboradComponent },
+  { path: 'developer/tasks', component: TaskComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 

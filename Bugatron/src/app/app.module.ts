@@ -26,6 +26,11 @@ import { ProjectAddComponent } from './admin/project/project-add/project-add.com
 import { IssueAddComponent } from './admin/issue/issue-add/issue-add.component';
 import { CompanyComponent } from './company/company.component';
 import { CompanyAddComponent } from './company/company-add/company-add.component';
+import { CustomerDashboradComponent } from './customer/customer-dashborad/customer-dashborad.component';
+import { IssuesReportComponent } from './customer/issues-report/issues-report.component';
+import { IssuesAddComponent } from './customer/issues-add/issues-add.component';
+import { DeveloperDashboradComponent } from './developer/developer-dashborad/developer-dashborad.component';
+import { TaskComponent } from './developer/task/task.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +53,12 @@ import { CompanyAddComponent } from './company/company-add/company-add.component
     ProjectAddComponent,
     IssueAddComponent,
     CompanyComponent,
-    CompanyAddComponent
+    CompanyAddComponent,
+    CustomerDashboradComponent,
+    IssuesReportComponent,
+    IssuesAddComponent,
+    DeveloperDashboradComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,

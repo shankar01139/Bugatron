@@ -61,10 +61,9 @@ export class DeveloperAddComponent implements OnInit {
   goBack() {
     this.router.navigateByUrl('/admin/developer');
   }
-  getCustInfo() {
-    debugger;
-    this.service.get(this.myParam).subscribe((res) => {
-      console.log(res.developer_contact)
+  getCustInfo(){
+    this.service.get(this.myParam).subscribe(res =>{
+      debugger
       this.dev.developer_id = res.developer_id;
       this.dev.developer_name = res.developer_name;
       this.dev.developer_pos = res.developer_pos;
@@ -72,6 +71,6 @@ export class DeveloperAddComponent implements OnInit {
       this.dev.developer_password = res.developer_password;
       this.dev.developer_contact = res.developer_contact;
       this.dev.created = res.created;
-    });
+    })
   }
 }

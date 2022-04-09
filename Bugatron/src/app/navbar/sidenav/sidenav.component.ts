@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class SidenavComponent implements OnInit {
 
   constructor() { }
-
+  userType:any;
   ngOnInit(): void {
+    this.userType = sessionStorage.getItem("userType");
   }
 
 }
