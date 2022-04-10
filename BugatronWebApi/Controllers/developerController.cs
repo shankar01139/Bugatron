@@ -33,7 +33,7 @@ namespace BugatronWebApi.Controllers
 
         [HttpGet("{mail}/{password}")]
         [ApiExplorerSettings(IgnoreApi = true)]
-        public IActionResult Login(string mail, string password)
+        public developer_info Login(string mail, string password)
         {
             return developerRepository.Login(mail, password);
         }

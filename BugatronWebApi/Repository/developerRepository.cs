@@ -48,13 +48,13 @@ namespace BugatronWebApi.Repository
                 return dbConnection.Query<developer_info>(sql,new { Id = id }).FirstOrDefault();
             }
         }
-        public IActionResult Login(string mail,string password)
+        public developer_info Login(string email,string password)
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string sql = "select * from developer where developer_email=@mail && developer_password=@password";
+                string sql = "select * from developer where developer_email=@email && developer_password=@password";
                 dbConnection.Open();
-                return dbConnection.Query<IActionResult>(sql, new { Email  = mail,Password = password }).FirstOrDefault();
+                return dbConnection.Query<developer_info>(sql, new { Email  = email,Password = password }).FirstOrDefault();
             }
         }      
 

@@ -19,14 +19,15 @@ export class CustomerInfoService {
   }
 
   create(data: any): Observable<CustomerInfo> {
-  debugger
     return this.http.post(baseURL, data);
   }
 
   update(id: any, data: any): Observable<any> {
     return this.http.put(`${baseURL}/${id}`, data);
   }
-
+  login(mail:any,pass:any){
+    return this.http.get(`${baseURL}/${mail}/${pass}`);
+  }
   delete(id: any): Observable<any> {
     return this.http.delete(`${baseURL}?id=${id}`);
   }

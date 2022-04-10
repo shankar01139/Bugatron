@@ -46,13 +46,13 @@ namespace BugatronWebApi.Repository
                 return dbConnection.Query<customer_info>(sql, new { Id = id }).FirstOrDefault();
             }
         }
-        public IActionResult Login(string mail, string password)
+        public customer_info Login(string email, string password)
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string sql = "select * from customer where customer_mail=@mail && customer_pass=@password";
+                string sql = "select * from customer where customer_mail=@email && customer_pass=@password";
                 dbConnection.Open();
-                return dbConnection.Query<IActionResult>(sql, new { Email = mail, Password = password }).FirstOrDefault();
+                return dbConnection.Query<customer_info>(sql, new { Email = email, Password = password }).FirstOrDefault();
             }
         }
 
