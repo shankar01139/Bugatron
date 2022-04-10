@@ -22,7 +22,7 @@ namespace BugatronWebApi.Repository
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string sql = @"insert into issue  (issue_id,issue_name,issue_desc,project_id,issue_status,created,updated,assigned_to) values (@issue_id,@issue_name,@issue_desc,@project_id,@issue_status,@created,@updated,@assigned_to)";
+                string sql = @"insert into issue  (issue_id,issue_name,issue_desc,project_id,issue_status,created,updated,assigned_to,action) values (@issue_id,@issue_name,@issue_desc,@project_id,@issue_status,@created,@updated,@assigned_to,@action)";
                 dbConnection.Open();
                 dbConnection.Execute(sql, issue);
             }
@@ -50,7 +50,7 @@ namespace BugatronWebApi.Repository
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string sql = "update issue set issue_id=@issue_id,issue_name=@issue_name,issue_desc=@issue_desc,project_id=@project_id,issue_status=@issue_status,created=@created,updated=@updated,assigned_to=@assigned_to where issue_id = @issue_id ";
+                string sql = "update issue set issue_id=@issue_id,issue_name=@issue_name,issue_desc=@issue_desc,project_id=@project_id,issue_status=@issue_status,created=@created,updated=@updated,assigned_to=@assigned_to,action=@action where issue_id = @issue_id ";
                 dbConnection.Open();
                 dbConnection.Execute(sql, issue);
             }

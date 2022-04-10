@@ -15,5 +15,6 @@ namespace BugatronWebApi.Model
         public DateTime created { get; set; }
         public DateTime updated { get; set; }
         public int assigned_to { get; set; }
+        public string action { get; set; }
     }
 }

@@ -7,4 +7,5 @@ export class IssueInfo {
     public  created ?:Date;
     public  updated ?:Date;
     public assigned_to?:number;
+    public action?:string;
 }
