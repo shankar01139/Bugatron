@@ -21,10 +21,9 @@
                           <th class="text-center">Issue Name</th>
                           <th class="text-center">Project</th>
                           <th class="text-center">Issue Status</th>
-                          <th class="text-center">Assigned To</th>
+                          <th class="text-center">Assigned to</th>
                           <th class="text-center">Last Updated</th>
-                          <th class="text-center">Edit</th>
-                          <th class="text-center">Delete</th>
+                          <th class="text-center">Assign</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -32,14 +31,15 @@
                           <td class="text-center">{{i+1}}</td>
                           <td class="text-center">{{issue.issue_name}} </td>
                           <td class="text-center">{{issue.project_id}} </td>
-                          <td class="text-center">{{issue.issue_status}}</td>
-                          <td class="text-center">{{issue.assigned_to}}</td>
+                          <td *ngIf="issue.issue_status == 'O'" class="text-center text-primary"><i class="mdi mdi-alert-octagon"></i> <br>Open</td>
+                        <td *ngIf="issue.issue_status == 'R'" class="text-center text-secondary"><i class="mdi mdi-alert-octagon"></i> <br> Resolved</td>
+                        <td *ngIf="issue.issue_status == 'C'" class="text-center text-success"><i class="mdi mdi-alert-octagon"></i> <br> Closed</td>
+                        <td *ngIf="issue.issue_status == 'RE'" class="text-center text-warning"><i class="mdi mdi-alert-octagon"></i> <br> Re-Opened</td>
+                          <td class="text-center text-secondary" *ngIf="issue.assigned_to == 0">Unassigned</td>
+                          <td class="text-center" *ngIf="issue.assigned_to != 0">{{issue.assigned_to}}</td>
                           <td class="text-center">{{issue.updated | date:'dd/MM/yyyy HH:mm a'}}</td>
                           <td class="text-center">
-                              <button class="btn btn-warning p-1" style="text-align: center;width: 75px;text-decoration: solid;" (click)="editIssue(issue.issue_id)"><b>Edit</b></button>    
-                          </td>
-                          <td class="text-center">
-                              <button class="btn btn-danger p-1" style="text-align: center;width: 75px;text-decoration: solid;" (click)="delIssue(issue.issue_id)"><b>Del</b></button>    
+                              <button class="btn btn-warning p-1" style="text-align: center;width: 75px;text-decoration: solid;" (click)="editIssue(issue.issue_id)"><b>Assign</b></button>    
                           </td>
                         </tr>
                       </tbody>

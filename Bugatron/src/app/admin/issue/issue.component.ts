@@ -23,12 +23,6 @@ export class IssueComponent implements OnInit {
       })
     })
   }
-  delIssue(id:any){
-    this.issueService.delete(id).subscribe(res =>{
-      console.log(res);
-      this.getIssue();
-    })
-  }
   editIssue(id:any){
    this.router.navigate(['/admin/issue/add',id]); 
   }

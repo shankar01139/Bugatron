@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { IssueInfo } from 'src/app/shared/model/issue-info.model';
+import { DeveloperInfoService } from 'src/app/shared/service/developer-info.service';
 import { IssueInfoService } from 'src/app/shared/service/issue-info.service';
 
 @Component({
@@ -17,11 +18,14 @@ export class IssueAddComponent implements OnInit {
     project_id: 0,
     created: new Date(),
     updated: new Date(),
-    assigned_to:0
+    assigned_to: 0,
+    action: '',
   };
+  devList:any =[];
   myParam: any;
   constructor(
     private service: IssueInfoService,
+    private devService:DeveloperInfoService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -33,6 +37,11 @@ export class IssueAddComponent implements OnInit {
         this.getCustInfo();
       }
     });
+    this.devService.getAll().subscribe(res => {
+      for(let i of res){
+        this.devList.push(i);
+      }
+    })
   }
   saveCompany() {
     console.log(this.issue);
@@ -43,20 +52,14 @@ export class IssueAddComponent implements OnInit {
       issue_status: this.issue.issue_status,
       project_id: this.issue.project_id,
       created: this.issue.created,
-      updated: this.issue.updated,
-      assigned_to:this.issue.assigned_to
+      updated: new Date(),
+      assigned_to: this.issue.assigned_to,
+      action: this.issue.action,
     };
-    if (data.issue_id == 0) {
-      this.service.create(data).subscribe((res) => {
-        console.log(res);
-        this.router.navigateByUrl('/admin/issue');
-      });
-    } else {
-      this.service.update(this.issue.issue_id, data).subscribe((res) => {
-        console.log(res);
-        this.router.navigateByUrl('/admin/issue');
-      });
-    }
+    this.service.update(this.issue.issue_id, data).subscribe((res) => {
+      console.log(res);
+      this.router.navigateByUrl('/admin/issue');
+    });
   }
 
   goBack() {
@@ -71,6 +74,8 @@ export class IssueAddComponent implements OnInit {
       this.issue.project_id = res.project_id;
       this.issue.created = res.created;
       this.issue.updated = res.updated;
+      this.issue.action = res.action;
+      this.issue.assigned_to = res.assigned_to;
     });
   }
 }

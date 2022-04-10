@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IssueInfo } from 'src/app/shared/model/issue-info.model';
 import { IssueInfoService } from 'src/app/shared/service/issue-info.service';
 import { ProjectInfoService } from 'src/app/shared/service/project-info.service';
@@ -22,10 +22,12 @@ export class IssuesAddComponent implements OnInit {
     action: '',
   };
   projList: any = [];
+  myParam:any;
   constructor(
     private issueService: IssueInfoService,
     private projService: ProjectInfoService,
-    private router: Router
+    private router: Router,
+    private route:ActivatedRoute
   ) {
     ($(document) as any).ready(() => {
       tinymce.baseURL = '/assets/tinymce';
@@ -65,18 +67,28 @@ export class IssuesAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    tinymce.remove();
+    tinymce.EditorManager.editors =[];
+    this.route.params.subscribe((params:Params) =>{
+      if(params['id']){
+        this.myParam = params['id'];
+        this.getIssueInfo();
+      }
+    })
     this.projService.getAll().subscribe((res) => {
       for (let i of res) {
         this.projList.push(i);
       }
       console.log(this.projList);
     });
+    
   }
   goBack() {
     this.router.navigateByUrl('/customer/dashboard');
   }
   saveIssue() {
+    this.issue.issue_desc = tinymce.get("issueDescp").getContent();
+    this.issue.action = "...";
+    this.issue.issue_status= "O";
     const data = {
       issue_id: this.issue.issue_id,
       issue_name: this.issue.issue_name,
@@ -84,12 +96,40 @@ export class IssuesAddComponent implements OnInit {
       issue_status: this.issue.issue_status,
       assigned_to: this.issue.assigned_to,
       created: this.issue.created,
-      project_id: this.issue.project_id,
+      project_id: +this.issue.project_id,
       updated: this.issue.updated,
       action:this.issue.action
     };
-    this.issueService.create(data).subscribe((res) => {
-      console.log(res);
-    });
+    console.log(data);
+    if(this.issue.issue_id == 0){
+      this.issueService.create(data).subscribe((res) => {
+        console.log(res);
+        this.goBack();
+      });
+    }
+    else
+    {
+      this.issueService.update(this.issue.issue_id,data).subscribe(res =>{
+        this.goBack();
+      })
+    }
+    
+  }
+
+
+  getIssueInfo(){
+    this.issueService.get(this.myParam).subscribe(res =>{
+      this.issue.issue_id = res.issue_id;
+      this.issue.issue_name = res.issue_name;
+      this.issue.issue_desc = res.issue_desc;
+      this.issue.issue_status = res.issue_status;
+      this.issue.project_id = res.project_id;
+      this.issue.assigned_to = res.assigned_to;
+      this.issue.action = res.action;
+      this.issue.created =  res.created;
+      this.issue.updated = res.updated;
+    tinymce.get("issueDescp").setContent(this.issue.issue_desc);
+
+    })
   }
 }

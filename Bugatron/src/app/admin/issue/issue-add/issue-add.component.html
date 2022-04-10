@@ -1,1 +1,59 @@
-<p>issue-add works!</p>
+<div class="container-scroller">
+  <app-topnav></app-topnav>
+  <div class="container-fluid page-body-wrapper">
+    <app-rightnav></app-rightnav>
+    <app-sidenav></app-sidenav>
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Assign Issue Ticket</h4>
+                <!-- <p class="card-description">
+                        Horizontal form layout
+                      </p> -->
+                <form
+                  class="forms-sample"
+                  autocomplete="off"
+                  #issueAdd="ngForm"
+                >
+                <div class="form-group row">
+                    <label
+                      for="exampleInputUsername2"
+                      class="col-sm-2 col-form-label"
+                      >Issue Name</label
+                    >
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleInputUsername2"
+                        placeholder="Enter Customername"
+                        name="issueName"
+                        #issueName="ngModel"
+                        [(ngModel)]="issue.issue_name"
+                        readonly
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Assign To</label>
+                    <div class="col-sm-10">
+                      <select name="compName" #compName="ngModel" [(ngModel)]="issue.assigned_to" class="form-control">
+                        <option value="null" disabled selected>Select Company</option>
+                        <option *ngFor="let cu of devList" [value]="cu.developer_id">{{cu.developer_name}}</option>
+                    </select>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary mr-2" (click)="saveCompany()">Assign Issue</button>
+                  <button class="btn btn-light" (click)="goBack()">Cancel</button>
+            </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -46,6 +46,7 @@ const routes: Routes = [
   { path: 'admin/issue/add/:id', component: IssueAddComponent },
   { path: 'customer/dashboard', component: CustomerDashboradComponent },
   { path: 'customer/addIssue', component: IssuesAddComponent },
+  { path: 'customer/addIssue/:id', component: IssuesAddComponent },
   { path: 'customer/issueReport', component: IssuesReportComponent },
   { path: 'developer/dashboard', component: DeveloperDashboradComponent },
   { path: 'developer/tasks', component: TaskComponent },
