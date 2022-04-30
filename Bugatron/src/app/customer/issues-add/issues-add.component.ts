@@ -22,17 +22,18 @@ export class IssuesAddComponent implements OnInit {
     action: '',
   };
   projList: any = [];
-  myParam:any;
+  isResolved: boolean = false;
+  myParam: any;
   constructor(
     private issueService: IssueInfoService,
     private projService: ProjectInfoService,
     private router: Router,
-    private route:ActivatedRoute
+    private route: ActivatedRoute
   ) {
     ($(document) as any).ready(() => {
       tinymce.baseURL = '/assets/tinymce';
       tinymce.init({
-        selector: 'textarea',
+        selector: 'textarea#issueDescp',
         theme: 'silver',
         plugins: [
           'advlist',
@@ -63,62 +64,71 @@ export class IssuesAddComponent implements OnInit {
         skin: false,
         content_css: false,
       });
+
+      tinymce.init({
+        selector: '#IssueAction',
+        inline: true,
+        readonly: 1,
+        skin: false,
+        content_css: false,
+      });
+    });
+    this.route.params.subscribe((params: Params) => {
+      if (params['id']) {
+        this.myParam = params['id'];
+        this.getIssueInfo();
+        if (sessionStorage.getItem('isResolved') == 'true') {
+          this.isResolved = true;
+          this.issueService.get(this.myParam).subscribe((res) => {
+            ($('#IssueAction') as any).html(res.action);
+          });
+        }
+      }
     });
   }
 
   ngOnInit(): void {
-    tinymce.EditorManager.editors =[];
-    this.route.params.subscribe((params:Params) =>{
-      if(params['id']){
-        this.myParam = params['id'];
-        this.getIssueInfo();
-      }
-    })
+    tinymce.EditorManager.editors = [];
     this.projService.getAll().subscribe((res) => {
       for (let i of res) {
         this.projList.push(i);
       }
       console.log(this.projList);
     });
-    
   }
   goBack() {
     this.router.navigateByUrl('/customer/dashboard');
   }
   saveIssue() {
-    this.issue.issue_desc = tinymce.get("issueDescp").getContent();
-    this.issue.action = "...";
-    this.issue.issue_status= "O";
+    this.issue.issue_desc = tinymce.get('issueDescp').getContent();
+    this.issue.action = '...';
+    this.issue.issue_status = 'O';
     const data = {
       issue_id: this.issue.issue_id,
       issue_name: this.issue.issue_name,
       issue_desc: this.issue.issue_desc,
       issue_status: this.issue.issue_status,
-      assigned_to: this.issue.assigned_to,
+      assigned_to: this.issue.assigned_to.toString(),
       created: this.issue.created,
-      project_id: +this.issue.project_id,
+      project_id: this.issue.project_id.toString(),
       updated: this.issue.updated,
-      action:this.issue.action
+      action: this.issue.action,
     };
     console.log(data);
-    if(this.issue.issue_id == 0){
+    if (this.issue.issue_id == 0) {
       this.issueService.create(data).subscribe((res) => {
         console.log(res);
         this.goBack();
       });
-    }
-    else
-    {
-      this.issueService.update(this.issue.issue_id,data).subscribe(res =>{
+    } else {
+      this.issueService.update(this.issue.issue_id, data).subscribe((res) => {
         this.goBack();
-      })
+      });
     }
-    
   }
 
-
-  getIssueInfo(){
-    this.issueService.get(this.myParam).subscribe(res =>{
+  getIssueInfo() {
+    this.issueService.get(this.myParam).subscribe((res) => {
       this.issue.issue_id = res.issue_id;
       this.issue.issue_name = res.issue_name;
       this.issue.issue_desc = res.issue_desc;
@@ -126,10 +136,9 @@ export class IssuesAddComponent implements OnInit {
       this.issue.project_id = res.project_id;
       this.issue.assigned_to = res.assigned_to;
       this.issue.action = res.action;
-      this.issue.created =  res.created;
+      this.issue.created = res.created;
       this.issue.updated = res.updated;
-    tinymce.get("issueDescp").setContent(this.issue.issue_desc);
-
-    })
+      ($('#issueDescp')as any).html(res.issue_desc);
+    });
   }
 }

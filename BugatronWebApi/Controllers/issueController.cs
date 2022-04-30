@@ -26,6 +26,24 @@ namespace BugatronWebApi.Controllers
             return issueRepository.GetAll();
         }
 
+        [HttpGet("GetUnassigned")]
+        [EnableCors("AllowOrigin")]
+        public IEnumerable<issue_info> GetUnassigned()
+        {
+            return issueRepository.GetUnassigned();
+        }
+        [HttpGet("GetResolved")]
+        [EnableCors("AllowOrigin")]
+        public IEnumerable<issue_info> GetResolved()
+        {
+            return issueRepository.GetResolved();
+        }
+        [HttpGet("GetAssigned/{id}")]
+        [EnableCors("AllowOrigin")]
+        public IEnumerable<issue_info> GetAssignedforme(int id)
+        {
+            return issueRepository.GetAssignedforme(id);
+        }
         [HttpGet("{id}")]
         public issue_info GetById(int id)
         {

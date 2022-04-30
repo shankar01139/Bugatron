@@ -15,7 +15,7 @@ export class IssueComponent implements OnInit {
     this.getIssue();
   }
   getIssue(){
-    this.issueService.getAll().subscribe(res =>{
+    this.issueService.getUnassigned().subscribe(res =>{
       console.log(res);
       this.issueList = res;
       setTimeout(()=>{

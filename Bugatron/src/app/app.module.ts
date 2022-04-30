@@ -31,6 +31,7 @@ import { IssuesReportComponent } from './customer/issues-report/issues-report.co
 import { IssuesAddComponent } from './customer/issues-add/issues-add.component';
 import { DeveloperDashboradComponent } from './developer/developer-dashborad/developer-dashborad.component';
 import { TaskComponent } from './developer/task/task.component';
+import { AddActionComponent } from './developer/add-action/add-action.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,8 @@ import { TaskComponent } from './developer/task/task.component';
     IssuesReportComponent,
     IssuesAddComponent,
     DeveloperDashboradComponent,
-    TaskComponent
+    TaskComponent,
+    AddActionComponent
   ],
   imports: [
     BrowserModule,

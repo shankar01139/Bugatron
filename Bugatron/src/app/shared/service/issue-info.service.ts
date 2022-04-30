@@ -13,7 +13,15 @@ export class IssueInfoService {
   getAll(): Observable<IssueInfo[]> {
     return this.http.get<IssueInfo[]>(baseURL);
   }
-
+  getUnassigned(): Observable<IssueInfo[]> {
+    return this.http.get<IssueInfo[]>(`${baseURL}/GetUnassigned`);
+  }
+  getResolved(): Observable<IssueInfo[]> {
+    return this.http.get<IssueInfo[]>(`${baseURL}/GetResolved`);
+  }
+  getAssignedforMe(id:any): Observable<IssueInfo[]> {
+    return this.http.get<IssueInfo[]>(`${baseURL}/GetAssigned/${id}`);
+  }
   get(id: any): Observable<IssueInfo> {
     return this.http.get(`${baseURL}/${id}`);
   }
