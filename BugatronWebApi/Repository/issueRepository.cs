@@ -83,7 +83,15 @@ namespace BugatronWebApi.Repository
                 dbConnection.Execute(sql, issue);
             }
         }
-
+        public void UpdateAction(issue_info issue)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sql = "update issue set issue_status=@issue_status,updated=@updated,action=@action where issue_id = @issue_id ";
+                dbConnection.Open();
+                dbConnection.Execute(sql, issue);
+            }
+        }
         public void Delete(int id)
         {
             using (IDbConnection dbConnection = Connection)

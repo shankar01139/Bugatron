@@ -33,6 +33,9 @@ export class IssueInfoService {
   update(id: any, data: any): Observable<any> {
     return this.http.put(`${baseURL}/${id}`, data);
   }
+  updateAction(id: any, data: any): Observable<any> {
+    return this.http.put(`${baseURL}/Action/${id}`, data);
+  }
 
   delete(id: any): Observable<any> {
     return this.http.delete(`${baseURL}?id=${id}`);

@@ -1,1 +1,74 @@
-<p>add-action works!</p>
+<div class="container-scroller">
+  <app-topnav></app-topnav>
+  <div class="container-fluid page-body-wrapper">
+    <app-rightnav></app-rightnav>
+    <app-sidenav></app-sidenav>
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">{{issue.issue_name}}</h4>
+                <!-- <p class="card-description">
+                        Horizontal form layout
+                      </p> -->
+                <form
+                  class="forms-sample"
+                  autocomplete="off"
+                  #issueAdd="ngForm"
+                >
+                  <div class="form-group row">
+                    <label
+                      for="exampleInputUsername2"
+                      class="col-sm-2 col-form-label"
+                      >Resolution</label
+                    >
+                    <div class="col-sm-10">
+                        <select
+                        name="status"
+                        id="status"
+                        class="form-control"
+                        #status = "ngModel"
+                        [(ngModel)] = "issueStatus"
+                      >
+                        <option value="Done">Done</option>
+                        <option value="Duplicate">Duplicate</option>
+                        <option value="Unable to Reproduce">Unable to Reproduce</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label
+                      for="exampleInputUsername2"
+                      class="col-sm-2 col-form-label"
+                      >Comment</label
+                    >
+                    <div class="col-sm-10">
+                      <textarea
+                        name="issueDesc"
+                        id="issueAction"
+                        cols="30"
+                        rows="10"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn btn-primary mr-2"
+                    (click)="saveAction()"
+                  >
+                    Submit
+                  </button>
+                  <button class="btn btn-light" (click)="goBack()">
+                    Cancel
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

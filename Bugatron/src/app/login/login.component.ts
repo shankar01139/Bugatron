@@ -24,12 +24,11 @@ export class LoginComponent implements OnInit {
   }
   isCust: boolean ;
   isdev: boolean;
-
+   resp:any =[];
   ngOnInit(): void {}
   userLogin() {
     console.log(this.cust);
     this.customerService.login(this.cust.customer_mail,this.cust.customer_pass).subscribe(res =>{
-      debugger;
       if(res  == null){
       this.isCust = false;
       }
@@ -38,11 +37,15 @@ export class LoginComponent implements OnInit {
       }
     })
     this.devService.login(this.cust.customer_mail,this.cust.customer_pass).subscribe(res =>{
+      this.resp.push(res);
       if(res  == null){
         this.isdev = false;
         }
         else{
           this.isdev = true;
+          for(let i of this.resp){
+              sessionStorage.setItem("userId",i.developer_id);
+          }
         }
     })
     sessionStorage.setItem('currentUser', this.cust.customer_mail.toString());

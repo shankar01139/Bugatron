@@ -68,6 +68,15 @@ namespace BugatronWebApi.Controllers
                 issueRepository.Update(issue);
             }
         }
+        [HttpPut("Action/{id}")]
+        public void UpdateAction(int id, [FromBody] issue_info issue)
+        {
+            issue.issue_id = id;
+            if (ModelState.IsValid)
+            {
+                issueRepository.UpdateAction(issue);
+            }
+        }
 
 
         [HttpDelete]

@@ -22,6 +22,7 @@ import { IssuesReportComponent } from './customer/issues-report/issues-report.co
 import { IssuesAddComponent } from './customer/issues-add/issues-add.component';
 import { DeveloperDashboradComponent } from './developer/developer-dashborad/developer-dashborad.component';
 import { TaskComponent } from './developer/task/task.component';
+import { AddActionComponent } from './developer/add-action/add-action.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'customer/issueReport', component: IssuesReportComponent },
   { path: 'developer/dashboard', component: DeveloperDashboradComponent },
   { path: 'developer/tasks', component: TaskComponent },
+  { path: 'developer/tasks/action/:id', component: AddActionComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
