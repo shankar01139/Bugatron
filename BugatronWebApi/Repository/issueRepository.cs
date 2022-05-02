@@ -36,6 +36,15 @@ namespace BugatronWebApi.Repository
                 return dbConnection.Query<issue_info>(sql);
             }
         }
+        public IEnumerable<issue_info> GetAllIssue()
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sql = "select i.issue_id,i.issue_name,i.issue_desc,p.project_name as project_id,i.issue_status,i.created,i.updated,assigned_to,i.action from issue i inner join project p on i.project_id = p.project_id";
+                dbConnection.Open();
+                return dbConnection.Query<issue_info>(sql);
+            }
+        }
         public IEnumerable<issue_info> GetAssignedforme(int id)
         {
             using (IDbConnection dbConnection = Connection)

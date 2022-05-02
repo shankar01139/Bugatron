@@ -72,6 +72,8 @@
               "src/assets/js/settings.js",
               "src/assets/js/todolist.js",
               "src/assets/js/dashboard.js",
+              "src/assets/js/chart.js",
+              "src/assets/vendors/chart.js/Chart.min.js",
               "src/assets/js/Chart.roundedBarCharts.js"
             ]
           },

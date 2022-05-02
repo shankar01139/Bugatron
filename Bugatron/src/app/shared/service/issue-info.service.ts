@@ -25,7 +25,9 @@ export class IssueInfoService {
   get(id: any): Observable<IssueInfo> {
     return this.http.get(`${baseURL}/${id}`);
   }
-
+  getAllIssue(): Observable<IssueInfo[]> {
+    return this.http.get<IssueInfo[]>(`${baseURL}/GetAll`);
+  }
   create(data: any): Observable<IssueInfo> {
     return this.http.post(baseURL, data);
   }

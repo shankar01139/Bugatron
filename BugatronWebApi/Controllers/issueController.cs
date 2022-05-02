@@ -44,6 +44,13 @@ namespace BugatronWebApi.Controllers
         {
             return issueRepository.GetAssignedforme(id);
         }
+
+        [HttpGet("GetAll")]
+        [EnableCors("AllowOrigin")]
+        public IEnumerable<issue_info> GetAllIssue()
+        {
+            return issueRepository.GetAllIssue();
+        }
         [HttpGet("{id}")]
         public issue_info GetById(int id)
         {

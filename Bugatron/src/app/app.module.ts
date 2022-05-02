@@ -32,6 +32,7 @@ import { IssuesAddComponent } from './customer/issues-add/issues-add.component';
 import { DeveloperDashboradComponent } from './developer/developer-dashborad/developer-dashborad.component';
 import { TaskComponent } from './developer/task/task.component';
 import { AddActionComponent } from './developer/add-action/add-action.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +69,9 @@ import { AddActionComponent } from './developer/add-action/add-action.component'
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
