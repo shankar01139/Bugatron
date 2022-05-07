@@ -27,13 +27,13 @@ namespace BugatronWebApi.Repository
                 dbConnection.Execute(sql, issue);
             }
         }
-        public IEnumerable<issue_info> GetAll()
+        public IEnumerable<issue_info> GetAll(int id)
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string sql = "select i.issue_id,i.issue_name,i.issue_desc,p.project_name as project_id,i.issue_status,i.created,i.updated,d.developer_name as assigned_to,i.action from issue i inner join project p on i.project_id = p.project_id inner join developer d on i.assigned_to = d.developer_id";
+                string sql = "select i.issue_id,i.issue_name,i.issue_desc,p.project_name as project_id,i.issue_status,i.created,i.updated,d.developer_name as assigned_to,i.action from issue i inner join project p on i.project_id = p.project_id inner join developer d on i.assigned_to = d.developer_id where p.customer_id = @id";
                 dbConnection.Open();
-                return dbConnection.Query<issue_info>(sql);
+                return dbConnection.Query<issue_info>(sql,new{Id=id});
             }
         }
         public IEnumerable<issue_info> GetAllIssue()
@@ -54,7 +54,17 @@ namespace BugatronWebApi.Repository
                 return dbConnection.Query<issue_info>(sql, new { Id = id });
             }
         }
-        public IEnumerable<issue_info> GetResolved()
+        public IEnumerable<issue_info> GetResolved(int id)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sql = "select i.issue_id,i.issue_name,i.issue_desc,p.project_name as project_id,i.issue_status,i.created,i.updated,d.developer_name as assigned_to,i.action from issue i inner join project p on i.project_id = p.project_id inner join developer d on i.assigned_to = d.developer_id where issue_status = 'R' and p.customer_id = @id";
+                dbConnection.Open();
+                return dbConnection.Query<issue_info>(sql,new { Id = id });
+            }
+        }
+
+        public IEnumerable<issue_info> GetResolvedIssues()
         {
             using (IDbConnection dbConnection = Connection)
             {
@@ -63,8 +73,16 @@ namespace BugatronWebApi.Repository
                 return dbConnection.Query<issue_info>(sql);
             }
         }
-
-        public IEnumerable<issue_info> GetUnassigned()
+        public IEnumerable<issue_info> GetUnassigned(int id)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sql = "select i.issue_id,i.issue_name,i.issue_desc,p.project_name as project_id,i.issue_status,i.created,i.updated,assigned_to,i.action from issue i inner join project p on i.project_id = p.project_id where assigned_to = 0 and p.customer_id = @id";
+                dbConnection.Open();
+                return dbConnection.Query<issue_info>(sql,new { Id = id });
+            }
+        }
+        public IEnumerable<issue_info> GetUnassignedIssues()
         {
             using (IDbConnection dbConnection = Connection)
             {

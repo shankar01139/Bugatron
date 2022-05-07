@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { IssueInfo } from 'src/app/shared/model/issue-info.model';
 import { DeveloperInfoService } from 'src/app/shared/service/developer-info.service';
 import { IssueInfoService } from 'src/app/shared/service/issue-info.service';
-
+declare var tinymce:any;
 @Component({
   selector: 'app-issue-add',
   templateUrl: './issue-add.component.html',
@@ -22,19 +22,37 @@ export class IssueAddComponent implements OnInit {
     action: '',
   };
   devList:any =[];
+  isResolved: boolean = false;
   myParam: any;
   constructor(
     private service: IssueInfoService,
     private devService:DeveloperInfoService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    ($(document)as any).ready(() =>{
+      
+      tinymce.init({
+        selector: '#IssueAction',
+        inline: true,
+        readonly: 1,
+        skin: false,
+        content_css: false,
+      });
+    })
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       if (params['id']) {
         this.myParam = params['id'];
         this.getCustInfo();
+        if (sessionStorage.getItem('isResolved') == 'true') {
+          this.isResolved = true;
+          this.service.get(this.myParam).subscribe((res) => {
+            ($('#IssueAction') as any).html(res.action);
+          });
+        }
       }
     });
     this.devService.getAll().subscribe(res => {

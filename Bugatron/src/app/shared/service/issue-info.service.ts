@@ -10,14 +10,20 @@ const baseURL = environment.url + "/issue";
 export class IssueInfoService {
 
   constructor(private http: HttpClient) { }
-  getAll(): Observable<IssueInfo[]> {
-    return this.http.get<IssueInfo[]>(baseURL);
+  getAll(id:any): Observable<IssueInfo[]> {
+    return this.http.get<IssueInfo[]>(`${baseURL}/GetAll/${id}`);
   }
-  getUnassigned(): Observable<IssueInfo[]> {
-    return this.http.get<IssueInfo[]>(`${baseURL}/GetUnassigned`);
+  getUnassigned(id:any): Observable<IssueInfo[]> {
+    return this.http.get<IssueInfo[]>(`${baseURL}/GetUnassigned/${id}`);
   }
-  getResolved(): Observable<IssueInfo[]> {
-    return this.http.get<IssueInfo[]>(`${baseURL}/GetResolved`);
+  getUnassignedIssues(): Observable<IssueInfo[]> {
+    return this.http.get<IssueInfo[]>(`${baseURL}/GetUnassignedIssues`);
+  }
+  getResolved(id:any): Observable<IssueInfo[]> {
+    return this.http.get<IssueInfo[]>(`${baseURL}/GetResolved/${id}`);
+  }
+  getResolvedIssues(): Observable<IssueInfo[]> {
+    return this.http.get<IssueInfo[]>(`${baseURL}/GetResolvedIssues`);
   }
   getAssignedforMe(id:any): Observable<IssueInfo[]> {
     return this.http.get<IssueInfo[]>(`${baseURL}/GetAssigned/${id}`);

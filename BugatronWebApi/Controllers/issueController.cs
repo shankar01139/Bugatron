@@ -19,24 +19,36 @@ namespace BugatronWebApi.Controllers
         {
             issueRepository = new issueRepository();
         }
-        [HttpGet]
+        [HttpGet("GetAll/{id}")]
         [EnableCors("AllowOrigin")]
-        public IEnumerable<issue_info> GetAll()
+        public IEnumerable<issue_info> GetAll(int id)
         {
-            return issueRepository.GetAll();
+            return issueRepository.GetAll(id);
         }
 
-        [HttpGet("GetUnassigned")]
+        [HttpGet("GetUnassigned/{id}")]
         [EnableCors("AllowOrigin")]
-        public IEnumerable<issue_info> GetUnassigned()
+        public IEnumerable<issue_info> GetUnassigned(int id)
         {
-            return issueRepository.GetUnassigned();
+            return issueRepository.GetUnassigned(id);
         }
-        [HttpGet("GetResolved")]
+        [HttpGet("GetUnassignedIssues")]
         [EnableCors("AllowOrigin")]
-        public IEnumerable<issue_info> GetResolved()
+        public IEnumerable<issue_info> GetUnassignedIssues()
         {
-            return issueRepository.GetResolved();
+            return issueRepository.GetUnassignedIssues();
+        }
+        [HttpGet("GetResolved/{id}")]
+        [EnableCors("AllowOrigin")]
+        public IEnumerable<issue_info> GetResolved(int id)
+        {
+            return issueRepository.GetResolved(id);
+        }
+        [HttpGet("GetResolvedIssues")]
+        [EnableCors("AllowOrigin")]
+        public IEnumerable<issue_info> Ge0tResolvedIssues()
+        {
+            return issueRepository.GetResolvedIssues();
         }
         [HttpGet("GetAssigned/{id}")]
         [EnableCors("AllowOrigin")]

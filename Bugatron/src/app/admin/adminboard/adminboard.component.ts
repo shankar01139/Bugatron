@@ -19,8 +19,7 @@ export class AdminboardComponent implements OnInit {
     private companyService: CompanyInfoService,
     private datepipe: DatePipe
   ) {
-    this.getissues();
-    console.log(this.issues?.Reopened);
+    console.log(this.issues?.open);
     ($(document) as any).ready(() => {
       if (($('#issue-chart') as any).length) {
         var SalesChartCanvas = ($('#issue-chart') as any)
@@ -80,6 +79,7 @@ export class AdminboardComponent implements OnInit {
     this.getCust();
     this.getCompany();
     this.getprojects();
+    this.getissues();
   }
   getCust() {
     this.customerService.getAll().subscribe((res) => {
@@ -103,15 +103,15 @@ export class AdminboardComponent implements OnInit {
     this.issueService.getAllIssue().subscribe((res) => {
       console.log(res);
       for (let i of res) {
-        if (i.created >= new Date() && i.issue_status != 'R') {
-          this.count.issues++;
+        if (i.issue_status != 'R') {
+          this.count.issues += 1;
         }
         debugger;
         if (i.issue_status == 'O') {
-          this.issues.open++;
+          this.issues.open += 1;
         }
         if (i.issue_status == 'RE') {
-          this.issues.Reopened++;
+          this.issues.Reopened += 1;
         }
       }
     });

@@ -22,32 +22,39 @@ export class LoginComponent implements OnInit {
       console.log(res);
     });
   }
-  isCust: boolean ;
+  isCust: boolean;
   isdev: boolean;
-   resp:any =[];
+  resp: any = [];
+  custresp:any=[];
   ngOnInit(): void {}
   userLogin() {
     console.log(this.cust);
-    this.customerService.login(this.cust.customer_mail,this.cust.customer_pass).subscribe(res =>{
-      if(res  == null){
-      this.isCust = false;
-      }
-      else{
-        this.isCust = true;
-      }
-    })
-    this.devService.login(this.cust.customer_mail,this.cust.customer_pass).subscribe(res =>{
-      this.resp.push(res);
-      if(res  == null){
-        this.isdev = false;
-        }
-        else{
-          this.isdev = true;
-          for(let i of this.resp){
-              sessionStorage.setItem("userId",i.developer_id);
+    this.customerService
+      .login(this.cust.customer_mail, this.cust.customer_pass)
+      .subscribe((res) => {
+        this.custresp.push(res);
+        if (res == null) {
+          this.isCust = false;
+        } else {
+          this.isCust = true;
+          for (let i of this.custresp) {
+            sessionStorage.setItem('userId', i.customer_id);
           }
         }
-    })
+      });
+    this.devService
+      .login(this.cust.customer_mail, this.cust.customer_pass)
+      .subscribe((res) => {
+        this.resp.push(res);
+        if (res == null) {
+          this.isdev = false;
+        } else {
+          this.isdev = true;
+          for (let i of this.resp) {
+            sessionStorage.setItem('userId', i.developer_id);
+          }
+        }
+      });
     sessionStorage.setItem('currentUser', this.cust.customer_mail.toString());
     if (
       this.cust.customer_mail == 'bugAdmin@gmail.com' &&

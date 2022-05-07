@@ -19,7 +19,8 @@ export class IssuesReportComponent implements OnInit {
     this.getResolved();
   }
   getIssue() {
-    this.issueService.getAll().subscribe((res) => {
+    this.issueService.getAll(sessionStorage.getItem("userId")).subscribe((res) => {
+      debugger;
       console.log(res);
       for (let i of res) {
         if (i.issue_status != 'R') {
@@ -32,7 +33,7 @@ export class IssuesReportComponent implements OnInit {
     });
   }
   getResolved() {
-    this.issueService.getResolved().subscribe((res) => {
+    this.issueService.getResolved(sessionStorage.getItem("userId")).subscribe((res) => {
       console.log(res);
       for (let i of res) {
           this.resolvedIssues.push(i);
@@ -43,7 +44,7 @@ export class IssuesReportComponent implements OnInit {
     });
   }
   getUnassigned() {
-    this.issueService.getUnassigned().subscribe((res) => {
+    this.issueService.getUnassigned(sessionStorage.getItem("userId")).subscribe((res) => {
       console.log(res);
       for (let i of res) {
         if (i.issue_status != 'R') {
