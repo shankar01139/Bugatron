@@ -23,7 +23,7 @@
                       <div class="form-group row">
                         <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Company Name</label>
                         <div class="col-sm-9">
-                            <select name="compName" #compName="ngModel" [(ngModel)]="proj.project_company" class="form-control">
+                            <select name="compName" #compName="ngModel" [(ngModel)]="proj.project_company" class="form-control" (change)="getCustomer($event)">
                                 <option value="null" disabled selected>Select Company</option>
                                 <option *ngFor="let cu of compList" [value]="cu.comapny_name">{{cu.comapny_name}}</option>
                             </select>

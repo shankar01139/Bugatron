@@ -96,9 +96,70 @@
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Issue Resolution</h4>
-                <div class="form-group row">
-                  <div class="col-sm-12" id="IssueAction"></div>
-                </div>
+                <form
+                  class="forms-sample"
+                  autocomplete="off"
+                  #issueAdd="ngForm"
+                >
+                  <div class="form-group row">
+                    <label
+                      for="exampleInputUsername2"
+                      class="col-sm-2 col-form-label"
+                      >Issue Name</label
+                    >
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleInputUsername2"
+                        placeholder="Enter Customername"
+                        name="issueName"
+                        #issueName="ngModel"
+                        [(ngModel)]="issue.issue_name"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label
+                      for="exampleInputUsername4"
+                      class="col-sm-2 col-form-label"
+                      >Issue Action</label
+                    >
+                    <div class="col-sm-10">
+                      <div id="IssueAction" style="width:200px !important"></div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label
+                      for="exampleInputUsername3"
+                      class="col-sm-2 col-form-label"
+                      >Issue Status</label
+                    >
+                    <div class="col-sm-10">
+                      <select
+                      name="status_i"
+                      id="status"
+                      class="form-control"
+                      (change)="onStatusChange($event, issue.issue_id)"
+                      #status="ngModel"
+                      [(ngModel)]="issueStatus"
+                    >
+                      <option value="C">Close</option>
+                      <option value="RE">Re-Open</option>
+                    </select>
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn btn-primary mr-2"
+                    (click)="saveIssue()"
+                  >
+                    Submit
+                  </button>
+                  <button class="btn btn-light" (click)="goBack()">
+                    Cancel
+                  </button>
+                </form>
               </div>
             </div>
           </div>

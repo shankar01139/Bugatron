@@ -28,12 +28,6 @@ export class ProjectAddComponent implements OnInit {
     private route: ActivatedRoute,
     private companyService:CompanyInfoService
   ) {
-    this.customerService.getAll().subscribe((res) => {
-      console.log(res);
-      for (let i of res) {
-        this.custList.push(i);
-      }
-    });
     this.companyService.getAll().subscribe(res=>{
       for(let i of res){
         this.compList.push(i);
@@ -83,6 +77,12 @@ export class ProjectAddComponent implements OnInit {
       this.proj.project_name = res.project_name;
       this.proj.created = res.created;
     });
+  }
+  getCustomer(event:any){
+    debugger;
+    this.customerService.getBycomp(event.target.value).subscribe(res =>{
+        this.custList = res;
+    })
   }
   
 }

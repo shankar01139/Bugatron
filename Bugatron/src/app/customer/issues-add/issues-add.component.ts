@@ -23,6 +23,7 @@ export class IssuesAddComponent implements OnInit {
   };
   projList: any = [];
   isResolved: boolean = false;
+  issueStatus:any;
   myParam: any;
   constructor(
     private issueService: IssueInfoService,
@@ -71,6 +72,7 @@ export class IssuesAddComponent implements OnInit {
         readonly: 1,
         skin: false,
         content_css: false,
+        width:'100'
       });
     });
     this.route.params.subscribe((params: Params) => {
@@ -80,6 +82,7 @@ export class IssuesAddComponent implements OnInit {
         if (sessionStorage.getItem('isResolved') == 'true') {
           this.isResolved = true;
           this.issueService.get(this.myParam).subscribe((res) => {
+             this.issueStatus = res.issue_status;
             ($('#IssueAction') as any).html(res.action);
           });
         }
@@ -89,7 +92,8 @@ export class IssuesAddComponent implements OnInit {
 
   ngOnInit(): void {
     tinymce.EditorManager.editors = [];
-    this.projService.getAll().subscribe((res) => {
+    this.projService.getByCustomer(sessionStorage.getItem("userId")).subscribe((res) => {
+      debugger; 
       for (let i of res) {
         this.projList.push(i);
       }
@@ -100,9 +104,12 @@ export class IssuesAddComponent implements OnInit {
     this.router.navigateByUrl('/customer/dashboard');
   }
   saveIssue() {
-    this.issue.issue_desc = tinymce.get('issueDescp').getContent();
-    this.issue.action = '...';
-    this.issue.issue_status = 'O';
+    debugger;
+    if(this.issue.issue_id ==0){
+      this.issue.issue_desc = tinymce.get('issueDescp').getContent();
+      this.issue.issue_status = 'O';
+      this.issue.action ="Unresolved"
+    }
     const data = {
       issue_id: this.issue.issue_id,
       issue_name: this.issue.issue_name,
@@ -140,5 +147,9 @@ export class IssuesAddComponent implements OnInit {
       this.issue.updated = res.updated;
       ($('#issueDescp')as any).html(res.issue_desc);
     });
+  }
+  onStatusChange(event:any,id:any){
+    sessionStorage.setItem("selectedStatus",event.target.value);
+    this.issue.issue_status = event.target.value;
   }
 }

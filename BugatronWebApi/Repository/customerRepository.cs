@@ -37,6 +37,15 @@ namespace BugatronWebApi.Repository
                 return dbConnection.Query<customer_info>(sql);
             }
         }
+        public IEnumerable<customer_info> GetBycomp(string name)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sql = "select * from customer where company_name=@name";
+                dbConnection.Open();
+                return dbConnection.Query<customer_info>(sql, new { Name = name });
+            }
+        }
         public customer_info GetById(int id)
         {
             using (IDbConnection dbConnection = Connection)

@@ -58,7 +58,7 @@ namespace BugatronWebApi.Repository
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string sql = "select i.issue_id,i.issue_name,i.issue_desc,p.project_name as project_id,i.issue_status,i.created,i.updated,d.developer_name as assigned_to,i.action from issue i inner join project p on i.project_id = p.project_id inner join developer d on i.assigned_to = d.developer_id where issue_status = 'R' and p.customer_id = @id";
+                string sql = "select i.issue_id,i.issue_name,i.issue_desc,p.project_name as project_id,i.issue_status,i.created,i.updated,d.developer_name as assigned_to,i.action from issue i inner join project p on i.project_id = p.project_id inner join developer d on i.assigned_to = d.developer_id where issue_status = 'R' or issue_status = 'C' and p.customer_id = @id";
                 dbConnection.Open();
                 return dbConnection.Query<issue_info>(sql,new { Id = id });
             }
@@ -68,7 +68,7 @@ namespace BugatronWebApi.Repository
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string sql = "select i.issue_id,i.issue_name,i.issue_desc,p.project_name as project_id,i.issue_status,i.created,i.updated,d.developer_name as assigned_to,i.action from issue i inner join project p on i.project_id = p.project_id inner join developer d on i.assigned_to = d.developer_id where issue_status = 'R'";
+                string sql = "select i.issue_id,i.issue_name,i.issue_desc,p.project_name as project_id,i.issue_status,i.created,i.updated,d.developer_name as assigned_to,i.action from issue i inner join project p on i.project_id = p.project_id inner join developer d on i.assigned_to = d.developer_id where issue_status = 'R' or issue_status = 'C'";
                 dbConnection.Open();
                 return dbConnection.Query<issue_info>(sql);
             }

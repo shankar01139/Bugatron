@@ -25,7 +25,12 @@ namespace BugatronWebApi.Controllers
         {
             return projectRepository.GetAll();
         }
-
+        [HttpGet("GetbyCustomer/{id}")]
+        [EnableCors("AllowOrigin")]
+        public IEnumerable<project_info> GetbyCustomer(int id)
+        {
+            return projectRepository.GetByCustomer(id);
+        }
         [HttpGet("{id}")]
         public project_info GetById(int id)
         {

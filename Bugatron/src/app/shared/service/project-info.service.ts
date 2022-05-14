@@ -13,7 +13,9 @@ export class ProjectInfoService {
   getAll(): Observable<ProjectInfo[]> {
     return this.http.get<ProjectInfo[]>(baseURL);
   }
-
+  getByCustomer(id:any): Observable<ProjectInfo[]> {
+    return this.http.get<ProjectInfo[]>(`${baseURL}/GetbyCustomer/${id}`);
+  }
   get(id: any): Observable<ProjectInfo> {
     return this.http.get(`${baseURL}/${id}`);
   }

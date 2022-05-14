@@ -14,6 +14,10 @@ export class CustomerInfoService {
     return this.http.get<CustomerInfo[]>(baseURL);
   }
 
+  getBycomp(name: any): Observable<CustomerInfo> {
+    return this.http.get(`${baseURL}/GetByComp/${name}`);
+  }
+
   get(id: any): Observable<CustomerInfo> {
     return this.http.get(`${baseURL}/${id}`);
   }
