@@ -28,6 +28,10 @@ export class IssueInfoService {
   getAssignedforMe(id:any): Observable<IssueInfo[]> {
     return this.http.get<IssueInfo[]>(`${baseURL}/GetAssigned/${id}`);
   }
+  getIssueCount(date:any): Observable<IssueInfo[]> {
+    debugger
+    return this.http.get<IssueInfo[]>(`${baseURL}/GetIssueCount/${date}`);
+  }
   get(id: any): Observable<IssueInfo> {
     return this.http.get(`${baseURL}/${id}`);
   }

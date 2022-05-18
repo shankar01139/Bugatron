@@ -12,6 +12,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./adminboard.component.css'],
 })
 export class AdminboardComponent implements OnInit {
+  issueCount: any = [];
   constructor(
     private issueService: IssueInfoService,
     private projectService: ProjectInfoService,
@@ -20,6 +21,8 @@ export class AdminboardComponent implements OnInit {
     private datepipe: DatePipe
   ) {
     ($(document) as any).ready(() => {
+      let arr = ['0', '5', '10', '15', '20', '25'];
+
       this.issueService.getAllIssue().subscribe((res) => {
         console.log(res);
         for (let i of res) {
@@ -88,91 +91,97 @@ export class AdminboardComponent implements OnInit {
           },
         }); // end issue chart
       });
-      var areaData = {
-        
-      };
+      this.issueService
+        .getIssueCount(
+          this.datepipe.transform(
+            new Date().setDate(this.today.getDate() - 4),
+            'yyyy-MM-dd'
+          ) as any
+        )
+        .subscribe((res) => {
+          console.log(res);
+          this.issueCount.push(res);
+        });
+      this.issueService
+        .getIssueCount(
+          this.datepipe.transform(
+            new Date().setDate(this.today.getDate() - 3),
+            'yyyy-MM-dd'
+          ) as any
+        )
+        .subscribe((res) => {
+          console.log(res);
+          this.issueCount.push(res);
+        });
+      this.issueService
+        .getIssueCount(
+          this.datepipe.transform(
+            new Date().setDate(this.today.getDate() - 2),
+            'yyyy-MM-dd'
+          ) as any
+        )
+        .subscribe((res) => {
+          console.log(res);
+          this.issueCount.push(res);
+        });
+      this.issueService
+        .getIssueCount(
+          this.datepipe.transform(
+            new Date().setDate(this.today.getDate() - 1),
+            'yyyy-MM-dd'
+          ) as any
+        )
+        .subscribe((res) => {
+          console.log(res);
+          this.issueCount.push(res);
+        });
+      this.issueService
+        .getIssueCount(this.datepipe.transform(this.today, 'yyyy-MM-dd') as any)
+        .subscribe((res) => {
+          console.log(res);
+          this.issueCount.push(res);
+        });
+      this.issueCount.concat(arr);
+      var areaData = {};
       var revenueChartCanvas = ($('#order-chart') as any)
         .get(0)
         .getContext('2d');
       var revenueChart = new Chart(revenueChartCanvas, {
         type: 'line',
-        data: {labels: [
-          '10',
-          '',
-          '',
-          '20',
-          '',
-          '',
-          '30',
-          '',
-          '',
-          '40',
-          '',
-          '',
-          '50',
-          '',
-          '',
-          '60',
-          '',
-          '',
-          '70',
-        ],
-        datasets: [
-          {
-            data: [
-              200,
-              480,
-              700,
-              600,
-              620,
-              350,
-              380,
-              350,
-              850,
-              '600',
-              '650',
-              '350',
-              '590',
-              '350',
-              '620',
-              '500',
-              '990',
-              '780',
-              '650',
-            ],
-            borderColor: '#4747A1',
-            borderWidth: 2,
-            fill: false,
-            label: 'Issues',
-          },
-          {
-            data: [
-              400,
-              450,
-              410,
-              500,
-              480,
-              600,
-              450,
-              550,
-              460,
-              '560',
-              '450',
-              '700',
-              '450',
-              '640',
-              '550',
-              '650',
-              '400',
-              '850',
-              '800',
-            ],
-            borderColor: '#F09397',
-            borderWidth: 2,
-            fill: false,
-            label: 'Projects',
-          },
-        ],},
+        data: {
+          labels: [
+            this.datepipe.transform(
+              new Date().setDate(this.today.getDate() - 4),
+              'MMM d',
+              'en-US'
+            ) as any,
+            this.datepipe.transform(
+              new Date().setDate(this.today.getDate() - 3),
+              'MMM d',
+              'en-US'
+            ) as any,
+            this.datepipe.transform(
+              new Date().setDate(this.today.getDate() - 2),
+              'MMM d',
+              'en-US'
+            ) as any,
+            this.datepipe.transform(
+              new Date().setDate(this.today.getDate() - 1),
+              'MMM d',
+              'en-US'
+            ) as any,
+            this.datepipe.transform(this.today, 'MMM d', 'en-US') as any,
+          ],
+          datasets: [
+            {
+              data: this.issueCount,
+              borderColor: '#4747A1',
+              borderWidth: 2,
+              fill: false,
+              label: 'Issues',
+            },
+          ],
+        },
         options: {
           responsive: true,
           maintainAspectRatio: true,
@@ -223,6 +232,12 @@ export class AdminboardComponent implements OnInit {
     this.projectService.getAll().subscribe((res) => {
       console.log(res);
       this.count.projects = res.length;
+    });
+  }
+  getCount(date: any) {
+    this.issueService.getIssueCount(date).subscribe((res) => {
+      console.log(res);
+      this.issueCount.push(res);
     });
   }
   // getissues() {
