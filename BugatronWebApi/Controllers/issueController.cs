@@ -63,6 +63,13 @@ namespace BugatronWebApi.Controllers
             return issueRepository.Getissuecount(date);
         }
 
+        [HttpGet("GetCustIssueCount/{date}/{id}")]
+        [EnableCors("AllowOrigin")]
+        public int GetCustIssueCount(string date,int id)
+        {
+            return issueRepository.GetCustomerissuecount(date,id);
+        }
+
         [HttpGet("GetAll")]
         [EnableCors("AllowOrigin")]
         public IEnumerable<issue_info> GetAllIssue()

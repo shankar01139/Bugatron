@@ -46,6 +46,16 @@ namespace BugatronWebApi.Repository
                 return dbConnection.Query<project_info>(sql,new { Id=id});
             }
         }
+
+        public IEnumerable<project_info> GetByCompany(string company)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sql = "select project_id,project_name,project_company,p.created,c.customer_name as customer_id from project p join customer c on c.customer_id = p.customer_id where p.project_company = @company";
+                dbConnection.Open();
+                return dbConnection.Query<project_info>(sql, new { Company = company });
+            }
+        }
         public project_info GetById(int id)
         {
             using (IDbConnection dbConnection = Connection)

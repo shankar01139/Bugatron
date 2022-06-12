@@ -64,7 +64,7 @@ export class AdminboardComponent implements OnInit {
               },
               {
                 label: 'Reopened Issues',
-                data: [this.issues?.Reopened],
+                data: [this.issues?.ReOpened],
                 backgroundColor: '#4B49AC',
               },
               {

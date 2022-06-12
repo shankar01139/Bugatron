@@ -59,13 +59,20 @@ namespace BugatronWebApi.Repository
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string sql = "select count(*) as assigned_to from ( select * from issue where DATE(created) = @date ) as Date ";
+                string sql = "select * from issue where DAY(created) = DAY(@date)";
                 dbConnection.Open();
                 var res = dbConnection.Query(sql,new { Date = date });
-                foreach(var item in res){
-                    return Convert.ToInt32(item.assigned_to);
-                }
-                return 0;
+                return res.Count();
+            }
+        }
+        public int GetCustomerissuecount(string date,int id)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sql = "select i.issue_name from issue i inner join project p on i.project_id = p.project_id where p.customer_id = @id AND DAY(i.created) = DAY(@date) ";
+                dbConnection.Open();
+                var res = dbConnection.Query(sql, new { Date = date,Id = id });
+                return res.Count();
             }
         }
         public IEnumerable<issue_info> GetResolved(int id)

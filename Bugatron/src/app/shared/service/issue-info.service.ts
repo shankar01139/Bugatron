@@ -31,6 +31,9 @@ export class IssueInfoService {
   getIssueCount(date:any): Observable<IssueInfo[]> {
     return this.http.get<IssueInfo[]>(`${baseURL}/GetIssueCount/${date}`);
   }
+  getCustIssueCount(date:any,id:any): Observable<IssueInfo[]> {
+    return this.http.get<IssueInfo[]>(`${baseURL}/GetCustIssueCount/${date}/${id}`);
+  }
   get(id: any): Observable<IssueInfo> {
     return this.http.get(`${baseURL}/${id}`);
   }
