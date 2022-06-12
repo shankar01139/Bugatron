@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
           this.isCust = true;
           for (let i of this.custresp) {
             sessionStorage.setItem('userId', i.customer_id);
+            sessionStorage.setItem('currentuser', i.customer_name);
           }
         }
       });
@@ -52,6 +53,7 @@ export class LoginComponent implements OnInit {
           this.isdev = true;
           for (let i of this.resp) {
             sessionStorage.setItem('userId', i.developer_id);
+            sessionStorage.setItem('currentuser', i.developer_name);
           }
         }
       });

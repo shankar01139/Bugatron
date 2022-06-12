@@ -13,6 +13,7 @@ import { DatePipe } from '@angular/common';
 })
 export class AdminboardComponent implements OnInit {
   issueCount: any = [];
+  issueList:any = [];
   constructor(
     private issueService: IssueInfoService,
     private projectService: ProjectInfoService,
@@ -26,6 +27,7 @@ export class AdminboardComponent implements OnInit {
       this.issueService.getAllIssue().subscribe((res) => {
         console.log(res);
         for (let i of res) {
+          this.issueList.push(i);
           if (i.issue_status != 'R') {
             this.count.issues += 1;
           }
@@ -43,7 +45,7 @@ export class AdminboardComponent implements OnInit {
           }
         }
         console.log(this.issues);
-        var SalesChartCanvas = ($('#barchart') as any).get(0).getContext('2d'); //issue char bar
+        var SalesChartCanvas = ($('#salesBarchart') as any).get(0).getContext('2d'); //issue char bar
         var SalesChart = new Chart(SalesChartCanvas, {
           type: 'bar',
           data: {

@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class CustomerDashboradComponent implements OnInit {
 
   constructor() { }
-
+  currentUser:any
   ngOnInit(): void {
+    this.currentUser = sessionStorage.getItem("currentuser");
   }
 
 }

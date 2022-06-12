@@ -70,11 +70,7 @@
               "src/assets/js/hoverable-collapse.js",
               "src/assets/js/template.js",
               "src/assets/js/settings.js",
-              "src/assets/js/todolist.js",
-              "src/assets/js/dashboard.js",
-              "src/assets/js/chart.js",
-              "src/assets/vendors/chart.js/Chart.min.js",
-              "src/assets/js/Chart.roundedBarCharts.js"
+              "src/assets/js/todolist.js"
             ]
           },
           "configurations": {
