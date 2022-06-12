@@ -72,7 +72,7 @@ export class CustomerDashboradComponent implements OnInit {
         .getUnassigned(sessionStorage.getItem('userId'))
         .subscribe((res) => {
           debugger
-          console.log(this.issues.Reopened)
+          console.log(this.issues.ReOpened)
           for (let i of res) {
             this.issueList.push(i);
             if (i.issue_status != 'R') {
@@ -107,7 +107,7 @@ export class CustomerDashboradComponent implements OnInit {
               ],
               datasets: [
                 {
-                  label: "Today's Issues",
+                  label: "New Issues",
                   data: [this.issues?.open],
                   backgroundColor: '#98BDFF',
                 },

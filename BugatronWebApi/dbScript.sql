@@ -11,7 +11,7 @@ CREATE TABLE `issue` (
   `issue_name` varchar(45) NOT NULL,
   `issue_desc` longtext NOT NULL,
   `project_id` int NOT NULL,
-  `issue_status` char(1) NOT NULL,
+  `issue_status` char(2) NOT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
   `assigned_to` int NOT NULL,

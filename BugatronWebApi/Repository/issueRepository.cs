@@ -75,6 +75,17 @@ namespace BugatronWebApi.Repository
                 return res.Count();
             }
         }
+        public int GetDevIssuecount(string date, int id)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sql = "select i.issue_name from issue i inner join developer d on i.assigned_to = d.developer_id where i.assigned_to = @id AND DAY(i.created) = DAY(@date) ";
+                dbConnection.Open();
+                var res = dbConnection.Query(sql, new { Date = date, Id = id });
+                return res.Count();
+            }
+        }
+
         public IEnumerable<issue_info> GetResolved(int id)
         {
             using (IDbConnection dbConnection = Connection)

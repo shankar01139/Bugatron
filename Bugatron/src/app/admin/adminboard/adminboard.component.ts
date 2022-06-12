@@ -35,7 +35,7 @@ export class AdminboardComponent implements OnInit {
             this.issues.open += 1;
           }
           if (i.issue_status == 'RE') {
-            this.issues.Reopened += 1;
+            this.issues.ReOpened += 1;
           }
           if (i.issue_status == 'C') {
             this.issues.Closed += 1;
@@ -58,7 +58,7 @@ export class AdminboardComponent implements OnInit {
             ],
             datasets: [
               {
-                label: "Today's Issues",
+                label: "New Issues",
                 data: [this.issues?.open],
                 backgroundColor: '#98BDFF',
               },
@@ -253,7 +253,7 @@ export class AdminboardComponent implements OnInit {
   //         this.issues.open += 1;
   //       }
   //       if (i.issue_status == 'RE') {
-  //         this.issues.Reopened += 1;
+  //         this.issues.ReOpened += 1;
   //       }
   //     }
   //   });
